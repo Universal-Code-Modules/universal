@@ -1,0 +1,29 @@
+{
+  "name": "universal-modules",
+  "version": "1.0.0",
+  "description": "Universal modules for rapid node.js application development",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonpolak/universal.git"
+  },
+  "keywords": [
+    "modules"
+  ],
+  "author": "Collective",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leonpolak/universal/issues"
+  },
+  "homepage": "https://github.com/leonpolak/universal#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.1",
+    "auto-bind": "^5.0.1",
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.3",
+    "redis": "^4.6.13"
+  }
+}
