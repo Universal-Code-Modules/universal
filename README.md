@@ -48,10 +48,16 @@ Next: Redis, Mango and Cassandra.
 This module should manage interactions with AI language models:
 
 Openai  - there is the connector class managing many kinds of intercations with the Openai API, mostly self explanatory. 
-I will add image generations in the nearest future. You should have an openai account and the API key in .env file.
+I will add image generations in the nearest future. You should have an openai account and the API key (from here: https://platform.openai.com/api-keys) in .env file.
 
-Ollama -  I will add the connector class (with instructions) managing many kinds of intercations with various LLMs, local and remote.
+Hugginfce - there is the connector class managing many kinds of intercations with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
+You should obtain Hugginface token here: https://huggingface.co/settings/tokens and place it in .env file.
 
+Ollama -  there is the connector class managing many kinds of intercations with multiple local LLMs. 
+You should install Ollama from https://github.com/ollama/ollama on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
+
+* ollama serve
+* ollama run llama2
 ### Frontend
 
 I will add 3 subrepositories for Vue, React and Angular, all set for front-end running and testing. 
