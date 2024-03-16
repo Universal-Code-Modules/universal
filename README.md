@@ -69,8 +69,10 @@ Other CSS frameworks, like Bulma, Materialize, Foundation, Semantic UI, Pure, Sk
 ## Testing
 
 I have an experience with Jest and I would like to use it for testing (but we may set other systems in parrallel). 
-The tests are the main way to check how any module works and what it does. 
-I will set the system in the nearest future. 
+To check a module functionality without Jest you can add some code to index.js in the root, but keep your changes locally and don't send them to github.
+Check the example of Jest usage in lib/LLM/OpenAi/openai-connectors.test.js.
+Run tests with: npm test command.
+
 
 ## Deployment
 
