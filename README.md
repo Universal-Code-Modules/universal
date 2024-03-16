@@ -36,6 +36,7 @@ Check periodically changes of the package.json file and install the new dependen
 
 This module shouls manage sending emails to the users. It should be able to send emails to the users, verify the email address, and send the password reset link.
 
+
 ### DB
 
 This module should manage interactions with databases. For starters: Postgres. 
