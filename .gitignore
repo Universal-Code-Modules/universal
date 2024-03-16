@@ -131,6 +131,8 @@ dist
 
 package-lock.json
 
+#index.js is for local testing only
+index.js
 #mac
 .DS_Store
 
