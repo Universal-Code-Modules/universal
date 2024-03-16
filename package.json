@@ -23,6 +23,9 @@
     "@sendgrid/mail": "^8.1.1",
     "auto-bind": "^5.0.1",
     "dotenv": "^16.4.5",
+    "ioredis": "^5.3.2",
+    "ollama-node": "^0.1.27",
+    "openai": "^4.29.1",
     "pg": "^8.11.3",
     "redis": "^4.6.13"
   }
