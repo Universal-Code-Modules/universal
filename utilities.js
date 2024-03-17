@@ -9,7 +9,7 @@ const LOG_TIME = process.env.LOG_TIME;
         if (start) {
           const diff = process.hrtime(start);
           const time = (diff[0] ? diff[0] + ' sec, ' : '') + (diff[1]/NUM_IN_MS).toFixed(3) + 'ms';
-          return console.log(label, time);
+          return { [label]: time };
         }
         return process.hrtime();
     }

@@ -17,6 +17,7 @@ PGPORT = ''
 SENDGRID_API_KEY=''
 OPENAI_API_KEY=''
 HUGGINFACE_TOKEN = ''
+ELEVENLABS_API_KEY = ''
 NODE_ENV = 'test'
 LOG_TIME = 'true'
 DOMAIN = 'localhost'
@@ -30,6 +31,7 @@ Fill the .env file with the following data:
 * Register free sendgrid account and get the API key (for developers using email module)
 * Register free openai account and get the API key (for developers of LLM module)
 * Register free huggingface account and get the token (for developers of LLM module)
+* Register free elevenlabs account and get the API key (for developers using Elevenlabs speech-to-text module)
 
 Check periodically changes of the package.json file and install the new dependencies.
 
@@ -58,6 +60,8 @@ You should obtain Hugginface token here: https://huggingface.co/settings/tokens 
 
 Ollama -  there is the connector class managing many kinds of intercations with multiple local LLMs. 
 You should install Ollama from https://github.com/ollama/ollama on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
+
+
 
 * ollama serve
 * ollama run llama2
