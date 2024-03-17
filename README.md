@@ -16,10 +16,12 @@ PGHOST = ''
 PGPORT = '' 
 SENDGRID_API_KEY=''
 OPENAI_API_KEY=''
-NODE_ENV='test'
-DOMAIN='localhost'
-ADMIN_EMAIL='your_email'
-TEST_USER_EMAIL='your_email'
+HUGGINFACE_TOKEN = ''
+NODE_ENV = 'test'
+LOG_TIME = 'true'
+DOMAIN = 'localhost'
+ADMIN_EMAIL = 'your_email'
+TEST_USER_EMAIL = 'your_email'
 
 ```
 
@@ -27,6 +29,7 @@ Fill the .env file with the following data:
 * Your local postgres credentials
 * Register free sendgrid account and get the API key (for developers using email module)
 * Register free openai account and get the API key (for developers of LLM module)
+* Register free huggingface account and get the token (for developers of LLM module)
 
 Check periodically changes of the package.json file and install the new dependencies.
 
