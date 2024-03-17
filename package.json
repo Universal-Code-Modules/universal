@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/leonpolak/universal#readme",
   "dependencies": {
+    "@huggingface/agents": "^0.0.5",
+    "@huggingface/hub": "^0.14.2",
     "@huggingface/inference": "^2.6.6",
     "@sendgrid/mail": "^8.1.1",
     "auto-bind": "^5.0.1",
