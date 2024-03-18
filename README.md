@@ -128,6 +128,7 @@ To use it, you should install it globally with npm install -g clinic and then ru
 
 ```
 npm install -g clinic
+npm install -g autocannon
 clinic doctor -- node server.js
 
 ```

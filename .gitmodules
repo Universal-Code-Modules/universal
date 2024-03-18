@@ -4,3 +4,6 @@
 [submodule "lib/FRONTEND/React"]
 	path = lib/FRONTEND/React
 	url = https://github.com/leonpolak/universal-react.git
+[submodule "lib/FRONTEND/Angular"]
+	path = lib/FRONTEND/Angular
+	url = https://github.com/leonpolak/universal-angular.git
