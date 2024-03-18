@@ -129,11 +129,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-package-lock.json
+
 
 #index.js is for local testing only
 index.js
 #mac
 .DS_Store
-
+#store temp files for testing
 temp

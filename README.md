@@ -16,7 +16,7 @@ PGHOST = ''
 PGPORT = '' 
 SENDGRID_API_KEY=''
 OPENAI_API_KEY=''
-HUGGINFACE_TOKEN = ''
+HUGGINGFACE_TOKEN = ''
 ELEVENLABS_API_KEY = ''
 NODE_ENV = 'test'
 LOG_TIME = 'true'
@@ -52,19 +52,21 @@ Next: Redis, Mango and Cassandra.
 
 This module should manage interactions with AI language models:
 
-Openai  - there is the connector class managing many kinds of intercations with the Openai API, mostly self explanatory. 
-I will add image generations in the nearest future. You should have an openai account and the API key (from here: https://platform.openai.com/api-keys) in .env file.
+Openai  - there is the connector class managing many kinds of interactions with the Openai API, mostly self explanatory. 
+I will add image generations in the nearest future. You should have an openai account and the [API key](https://platform.openai.com/api-keys) in .env file.
 
-Hugginfce - there is the connector class managing many kinds of intercations with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
-You should obtain Hugginface token here: https://huggingface.co/settings/tokens and place it in .env file.
+Huggingface - there is the connector class managing many kinds of interactions with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
+You should obtain [Hugginface token](nhttps://huggingface.co/settings/tokens) and place it in .env file.
 
-Ollama -  there is the connector class managing many kinds of intercations with multiple local LLMs. 
-You should install Ollama from https://github.com/ollama/ollama on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
+Ollama -  there is the connector class managing many kinds of interactions with multiple local LLMs. 
+You should install [Ollama](https://github.com/ollama/ollama) on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2)
 
+Elevenlabs - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
 
-
-* ollama serve
-* ollama run llama2
+```
+ollama serve
+ollama run llama2
+```  
 ### Frontend
 
 I will add 3 subrepositories for Vue, React and Angular, all set for front-end running and testing. 
@@ -84,9 +86,27 @@ Other CSS frameworks, like Bulma, Materialize, Foundation, Semantic UI, Pure, Sk
 
 I have an experience with Jest and I would like to use it for testing (but we may set other systems in parrallel). 
 To check a module functionality without Jest you can add some code to index.js in the root, but keep your changes locally and don't send them to github.
-Check the example of Jest usage in lib/LLM/OpenAi/openai-connectors.test.js.
-Run tests with: npm test command.
+Check the example of Jest usage in lib/LLM/OpenAi/tests/openai-connectors.test.js.
+Run tests with: npm test command for all tests (though it's not recommended) or run particular test with following code:
+```
+// pattern:
+jest sample-file 
+// OR file name:
+jest path/to/sample-file.test.js 
 
+```
+
+
+## Diagnostics
+
+I would like to use Clinic.js [Clinic.js](https://clinicjs.org/) for diagnostics, but we may set other systems in parrallel.
+To use it, you should install it globally with npm install -g clinic and then run it with clinic doctor command.
+
+```
+npm install -g clinic
+clinic doctor -- node server.js
+
+```
 
 ## Deployment
 
