@@ -56,17 +56,19 @@ Openai  - there is the connector class managing many kinds of interactions with 
 I will add image generations in the nearest future. You should have an openai account and the [API key](https://platform.openai.com/api-keys) in .env file.
 
 Huggingface - there is the connector class managing many kinds of interactions with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
-You should obtain [Hugginface token](nhttps://huggingface.co/settings/tokens) and place it in .env file.
+You should obtain [Hugginface token](https://huggingface.co/settings/tokens) and place it in .env file.
 
 Ollama -  there is the connector class managing many kinds of interactions with multiple local LLMs. 
-You should install [Ollama](https://github.com/ollama/ollama) on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2)
-
-Elevenlabs - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
+You should install [Ollama](https://github.com/ollama/ollama) on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
 
 ```
 ollama serve
 ollama run llama2
 ```  
+
+Elevenlabs - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
+
+
 ### Frontend
 
 I will add 3 subrepositories for Vue, React and Angular, all set for front-end running and testing. 
@@ -96,6 +98,20 @@ jest path/to/sample-file.test.js
 
 ```
 
+ALternatively, you can check manually if a method works by placing following code in the index.js file in the root (in this case we testing Elevenlabs module):
+```
+
+(async () => {  
+    const res = await require('./lib/LLM/Elevenlabs/elevenlabs-connector').getVoice();
+})()
+```
+Since NODE_ENV environment variable is set to 'test', each method should print the api responce by itself.
+
+For those who unfamiliar with backend, you run following command in the terminal:
+``` 
+node index.js
+```
+Just don't forget to remove the code from the index.js file after testing.
 
 ## Diagnostics
 
