@@ -83,7 +83,7 @@ I'm going to add sub-repositories for the **Next** and **Nuxt** frameworks so we
 
 ### Servers
 
-I will add subrepositories for Metarhia, Fastify, and Express, with optional Nginx load balancer. This way we can compare side-by-side their features, as well as try load testing and diagnostics.
+I will add subrepositories for **Metarhia**, **Fastify**, and **Express**, with optional **Nginx** load balancer. This way we can compare side-by-side their features, as well as try load testing and diagnostics.
 
 ## General development guidance
 
@@ -123,8 +123,8 @@ Just don't forget to remove the code from the index.js file after testing.
 
 ## Diagnostics
 
-I would like to use Clinic.js [Clinic.js](https://clinicjs.org/) for diagnostics, but we may set other systems in parrallel.
-To use it, you should install it globally with npm install -g clinic and then run it with clinic doctor command.
+I would like to use [Clinic.js](https://clinicjs.org/) for diagnostics, but we may set other systems in parrallel.
+To use it, you should install it globally with npm install -g clinic and then run it with clinic doctor command. [Read more](https://clinicjs.org/documentation/) and check [examples](https://github.com/clinicjs/node-clinic-doctor-examples).
 
 ```
 npm install -g clinic
