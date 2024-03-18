@@ -1,3 +1,6 @@
 [submodule "lib/FRONTEND/Vue"]
 	path = lib/FRONTEND/Vue
 	url = https://github.com/leonpolak/universal-vue.git
+[submodule "lib/FRONTEND/React"]
+	path = lib/FRONTEND/React
+	url = https://github.com/leonpolak/universal-react.git

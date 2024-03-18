@@ -52,13 +52,13 @@ Next: Redis, Mango and Cassandra.
 
 This module should manage interactions with AI language models:
 
-Openai  - there is the connector class managing many kinds of interactions with the Openai API, mostly self explanatory. 
+**Openai**  - there is the connector class managing many kinds of interactions with the Openai API, mostly self explanatory. 
 I will add image generations in the nearest future. You should have an openai account and the [API key](https://platform.openai.com/api-keys) in .env file.
 
-Huggingface - there is the connector class managing many kinds of interactions with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
+**Huggingface** - there is the connector class managing many kinds of interactions with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
 You should obtain [Hugginface token](https://huggingface.co/settings/tokens) and place it in .env file.
 
-Ollama -  there is the connector class managing many kinds of interactions with multiple local LLMs. 
+**Ollama** -  there is the connector class managing many kinds of interactions with multiple local LLMs. 
 You should install [Ollama](https://github.com/ollama/ollama) on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
 
 ```
@@ -66,16 +66,24 @@ ollama serve
 ollama run llama2
 ```  
 
-Elevenlabs - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
+**Elevenlabs** - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
 
 
 ### Frontend
 
-I will add 3 subrepositories for Vue, React and Angular, all set for front-end running and testing. 
-Maybe for vanilla WebComponents, though it is not a priority and I have doubts about it.
+There are 3 subrepositories for **Vue**, **React** and **Angular** for  running and testing front-end components. 
+In the future maybe we will try vanilla WebComponents, though it is not a priority and I have doubts about it.
 
 CSS frameworks I think about are: Bootstrap and Tailwind, I will write instructions how to switch.
-Other CSS frameworks, like Bulma, Materialize, Foundation, Semantic UI, Pure, Skeleton, Milligram, Spectre, Tachyons, and others are not a priority.
+Other CSS frameworks are not a priority so far.
+
+### Fullstack
+
+I'm going to add sub-repositories for the **Next** and **Nuxt** frameworks so we can compare the pros and cons of using them versus separate Front-Backend combinations. 
+
+### Servers
+
+I will add subrepositories for Metarhia, Fastify, and Express, with optional Nginx load balancer. This way we can compare side-by-side their features, as well as try load testing and diagnostics.
 
 ## General development guidance
 
