@@ -9,20 +9,25 @@ Run npm install
 
 Create in the root directory .env file with the following content:
 ```
-PGUSER = ''
-PGPASSWORD = ''
-PGDATABASE = ''
-PGHOST = ''
-PGPORT = '' 
+PGUSER=''
+PGPASSWORD=''
+PGDATABASE=''
+PGHOST=''
+PGPORT=''
+
+MJ_APIKEY_PUBLIC='your API key'
+MJ_APIKEY_PRIVATE='your API secret'
+MJ_API_TOKEN='your API token'
+ 
 SENDGRID_API_KEY=''
 OPENAI_API_KEY=''
-HUGGINGFACE_TOKEN = ''
-ELEVENLABS_API_KEY = ''
-NODE_ENV = 'test'
-LOG_TIME = 'true'
-DOMAIN = 'localhost'
-ADMIN_EMAIL = 'your_email'
-TEST_USER_EMAIL = 'your_email'
+HUGGINGFACE_TOKEN=''
+ELEVENLABS_API_KEY=''
+NODE_ENV='test'
+LOG_TIME='true'
+DOMAIN='localhost'
+ADMIN_EMAIL='your_email'
+TEST_USER_EMAIL='your_email'
 
 ```
 
