@@ -1,9 +1,38 @@
 require('dotenv').config();
-const LOG_TIME = process.env.LOG_TIME;
+const { LOG_API_CALL_TIME, LOG_API_CALL_RESULT } = require('./config');
+// const { TEST, LOG_TIME } = process.env;
+
+const _ = require('lodash');
+
+const callAPI = async (library, methodPath, ...args) => {
+    
+
+      const methodName = methodPath.split('.').pop();
+      const method = library[methodName];
+    
+      if (typeof method !== 'function') throw new Error(`Method ${methodPath} not found`)
+
+      let res, start;
+     
+
+        
+        if ( LOG_API_CALL_TIME) start = logTime();
+       
+        try {
+            res = await method.call(library, ...args);
+        } catch(error) {
+            // console.error(error);
+            throw new Error(`Error occured while calling ${methodPath}`, { error });
+        }
+      if (LOG_API_CALL_TIME) logTime(`${methodPath}`, start);
+      if (LOG_API_CALL_RESULT) console.log(`${methodPath} result:`, res);
+      
+        return res;
+    }
 
 
     const logTime = (label, start) => {
-        if (!LOG_TIME) return;
+        if (! LOG_API_CALL_TIME) return;
         const NS_PER_SEC = 1e9;
         const NUM_IN_MS = 1000000;
         if (start) {
@@ -76,4 +105,4 @@ const LOG_TIME = process.env.LOG_TIME;
 
 
 
-module.exports = {logTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize};
+module.exports = {callAPI, logTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize};
