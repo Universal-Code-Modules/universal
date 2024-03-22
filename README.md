@@ -40,6 +40,8 @@ Fill the .env file with the following data:
 
 Check periodically changes of the package.json file and install the new dependencies.
 
+All non private global settings, like port numbers etc. you should store in config.js
+
 ## Modules
 
 ### Email
@@ -73,6 +75,13 @@ ollama run llama2
 
 **Elevenlabs** - one of the most popular speech-to-text services. There is the connector class managing many kinds of interactions with the Elevenlabs API, mostly self explanatory. You should obtain [Elevenlabs API key](https://www.eleven-labs.com/en/docs/speech-to-text/getting-started) and place it in .env file.
 
+### Payment systems
+
+We should create client-server side modules for Stripe and Paypal
+
+### Social networks
+
+We should create client-server side modules for login/signup through Google, Facebook and Github
 
 ### Frontend
 
@@ -118,7 +127,9 @@ ALternatively, you can check manually if a method works by placing following cod
     const res = await require('./lib/LLM/Elevenlabs/elevenlabs-connector').getVoice();
 })()
 ```
-Since NODE_ENV environment variable is set to 'test', each method should print the api responce by itself.
+Use ut.callAPI universal method to call API endpoints in modules
+If LOG_API_CALL_TIME config variable is set to true, each method should meadure and print the each API call time.
+If LOG_API_CALL_RESULT config variable is set to true, each method should print the full api responce to pick required portion of data to return from a method.
 
 For those who unfamiliar with backend, you run following command in the terminal:
 ``` 
