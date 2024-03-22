@@ -127,8 +127,10 @@ ALternatively, you can check manually if a method works by placing following cod
     const res = await require('./lib/LLM/Elevenlabs/elevenlabs-connector').getVoice();
 })()
 ```
-Use ut.callAPI universal method to call API endpoints in modules
-If LOG_API_CALL_TIME config variable is set to true, each method should meadure and print the each API call time.
+Use ut.callAPI universal method to call API endpoints in modules.
+
+If LOG_API_CALL_TIME config variable is set to true, each method should measure and print the each API call time.
+
 If LOG_API_CALL_RESULT config variable is set to true, each method should print the full api responce to pick required portion of data to return from a method.
 
 For those who unfamiliar with backend, you run following command in the terminal:
