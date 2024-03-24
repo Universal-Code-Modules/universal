@@ -3,7 +3,13 @@
 The target of the project is to create number of universal and reusable modules for different purposes.
 
 ## Requrements
-Create separate local postgres database
+Create separate local postgresql database with optional [pgvector](https://github.com/pgvector/pgvector) extension (last version postgresql - 16).
+
+I recommend to install [timescaledb](https://neon.tech/docs/extensions/timescaledb) as well, but you can skip it for now.
+
+
+
+Install [nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/) for load balancing and reverse proxy (optional). 
 
 Run npm install
 
@@ -23,8 +29,6 @@ SENDGRID_API_KEY=''
 OPENAI_API_KEY=''
 HUGGINGFACE_TOKEN=''
 ELEVENLABS_API_KEY=''
-NODE_ENV='test'
-LOG_TIME='true'
 DOMAIN='localhost'
 ADMIN_EMAIL='your_email'
 TEST_USER_EMAIL='your_email'
@@ -52,8 +56,9 @@ This module manages email interaction with users. It should be able to send emai
 ### DB
 
 This module should manage interactions with databases. For starters: Postgres. 
+You should install [pgvector](https://github.com/pgvector/pgvector) extension for embeddings.
 
-Next: Redis, Mango and Cassandra.
+Next: Redis, Mongo, Cassandra and [Singlestore](https://www.singlestore.com/).
 
 ### LLM
 
@@ -119,6 +124,7 @@ jest sample-file
 jest path/to/sample-file.test.js 
 
 ```
+If you use VS code, don't forget to set "jest.runMode": "on-demand" in the settings.json file, to prevent automatic API calls.
 
 ALternatively, you can check manually if a method works by placing following code in the index.js file in the root (in this case we testing Elevenlabs module):
 ```

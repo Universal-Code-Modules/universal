@@ -7,3 +7,18 @@
 [submodule "lib/FRONTEND/Angular"]
 	path = lib/FRONTEND/Angular
 	url = https://github.com/leonpolak/universal-angular.git
+[submodule "BACKEND/Express"]
+	path = lib/BACKEND/Express
+	url = https://github.com/leonpolak/universal-express.git
+[submodule "BACKEND/Fastify"]
+	path = lib/BACKEND/Fastify
+	url = https://github.com/leonpolak/universal-fastify.git
+[submodule "BACKEND/Metarhia"]
+	path = lib/BACKEND/Metarhia
+	url = https://github.com/leonpolak/universal-metarhia.git
+[submodule "lib/FULLSTACK/Next"]
+	path = lib/FULLSTACK/Next
+	url = https://github.com/leonpolak/universal-next.git
+[submodule "lib/FULLSTACK/Nuxt"]
+	path = lib/FULLSTACK/Nuxt
+	url = https://github.com/leonpolak/universal-nuxt.git

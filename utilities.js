@@ -2,7 +2,7 @@ require('dotenv').config();
 const { LOG_API_CALL_TIME, LOG_API_CALL_RESULT } = require('./config');
 // const { TEST, LOG_TIME } = process.env;
 
-const _ = require('lodash');
+// const _ = require('lodash');
 
 const callAPI = async (library, methodPath, ...args) => {
     
@@ -24,7 +24,7 @@ const callAPI = async (library, methodPath, ...args) => {
             // console.error(error);
             throw new Error(`Error occured while calling ${methodPath}`, { error });
         }
-      if (LOG_API_CALL_TIME) logTime(`${methodPath}`, start);
+      if (LOG_API_CALL_TIME) console.log(logTime(`${methodPath}`, start));
       if (LOG_API_CALL_RESULT) console.log(`${methodPath} result:`, res);
       
         return res;
