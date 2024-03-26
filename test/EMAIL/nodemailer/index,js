@@ -1,5 +1,0 @@
-const Nodemailer = require('../../../lib/EMAIL/nodemailer/service.js');
-const pars = require('./params.js');
-
-const nodemailer = new Nodemailer(pars.mailConfig['ethereal'])
-console.log(nodemailer.checkServerStatus());
