@@ -1,5 +1,9 @@
 require('dotenv').config();
 const { LOG_API_CALL_TIME, LOG_API_CALL_RESULT } = require('./config');
+const fs  = require ("fs");
+const path = require('path');
+const events = require('events');
+const readline = require('readline');
 // const { TEST, LOG_TIME } = process.env;
 
 // const _ = require('lodash');
@@ -10,7 +14,10 @@ const callAPI = async (library, methodPath, ...args) => {
       const methodName = methodPath.split('.').pop();
       const method = library[methodName];
     
-      if (typeof method !== 'function') throw new Error(`Method ${methodPath} not found`)
+      if (typeof method !== 'function') {
+        const message = `Method ${methodPath} not found`;
+        throw new Error(message)
+      }
 
       let res, start;
      
@@ -22,7 +29,8 @@ const callAPI = async (library, methodPath, ...args) => {
             res = await method.call(library, ...args);
         } catch(error) {
             // console.error(error);
-            throw new Error(`Error occured while calling ${methodPath}`, { error });
+            const message = `Error occured while calling ${methodPath}`;
+            throw new Error(message, { error });
         }
       if (LOG_API_CALL_TIME) console.log(logTime(`${methodPath}`, start));
       if (LOG_API_CALL_RESULT) console.log(`${methodPath} result:`, res);
@@ -101,8 +109,71 @@ const callAPI = async (library, methodPath, ...args) => {
         return bytes.toFixed(dp) + ' ' + units[u];
     }
 
+    const extractVideoFrames = async (videoPath, outputDir, frameRate = 1, prefix = 'frame') => {
+        const ffmpeg = require('fluent-ffmpeg');
+        return new Promise((resolve, reject) => {
+            ffmpeg(videoPath)
+                .outputOptions([
+                    '-vf fps=' + frameRate,
+                    '-q:v 15'
+                    // '-update 1'
+                ])
+                .output(outputDir + `/${prefix}%04d.jpg`)
+                .on('end', () => {
+                    resolve();
+                })
+                .on('error', (err) => {
+                    reject(err);
+                })
+                .run();
+        });
+    }
+
+    const cleanDirectory = async (dir) => {
+        try {
+          const files = await fs.promises.readdir(dir);
+          for (const file of files) {
+            await fs.promises.unlink(path.join(dir, file));
+          }
+        } catch (error) {
+          console.error('Error cleaning directory:', error);
+        }
+    }
+
+    const processFileLineByLine = async (filePath, processLineCallback, finishCallback) => {
+      let index = 0, stat;
+      const startMemory = process.memoryUsage().heapUsed, startTime = logTime(), label = 'processFileLineByLine';
+      try {
+          stat = fs.statSync(filePath);
+          const rl = readline.createInterface({
+            input: fs.createReadStream(filePath),
+            crlfDelay: Infinity
+          });
+      
+          rl.on('line', (line) => {
+            // console.log(`Line from file: ${line}`);
+            index++;
+            processLineCallback({line, index});
+          });
+      
+          await events.once(rl, 'close');
+      
+          if (typeof finishCallback === 'function') {
+            const size = humanFileSize(stat.size, true);
+            const memoryUsed = (process.memoryUsage().heapUsed - startMemory) / 1024 / 1024;
+            const MB = Math.round(memoryUsed * 100) / 100 + ' MB';
+            const time = logTime(label, startTime);
+            
+            finishCallback({filePath, size, lines:index, used: MB, time:time[label]});
+          }
+      } catch (err) {
+          console.error(err);
+      }
+    }
+
+
+    
 
 
 
-
-module.exports = {callAPI, logTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize};
+module.exports = {callAPI, logTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine };

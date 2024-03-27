@@ -68,7 +68,8 @@ This module should manage interactions with AI language models:
 I will add image generations in the nearest future. You should have an openai account and the [API key](https://platform.openai.com/api-keys) in .env file.
 
 **Huggingface** - there is the connector class managing many kinds of interactions with the Huggingface API to multiple open-source LLMs, mostly self explanatory.
-You should obtain [Hugginface token](https://huggingface.co/settings/tokens) and place it in .env file.
+You should obtain [Hugginface token](https://huggingface.co/settings/tokens) and place it in .env file. 
+To compare manually performance and quality of open source models in parallel you can use [lmsys.org](https://chat.lmsys.org/).
 
 **Ollama** -  there is the connector class managing many kinds of interactions with multiple local LLMs. 
 You should install [Ollama](https://github.com/ollama/ollama) on your local machine to use this module. Then run following commands (with your preferred model - in this case llama2):
