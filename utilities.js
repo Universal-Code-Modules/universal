@@ -19,11 +19,12 @@ const callAPI = async (library, methodPath, ...args) => {
         throw new Error(message)
       }
 
-      let res, start;
+      let res, start, spentTime;
      
 
         
-        if ( LOG_API_CALL_TIME) start = logTime();
+        // if ( LOG_API_CALL_TIME) 
+        start = measureTime();
        
         try {
             res = await method.call(library, ...args);
@@ -32,24 +33,35 @@ const callAPI = async (library, methodPath, ...args) => {
             const message = `Error occured while calling ${methodPath}`;
             throw new Error(message, { error });
         }
-      if (LOG_API_CALL_TIME) console.log(logTime(`${methodPath}`, start));
+
+      spentTime  = measureTime(start)
+      if (LOG_API_CALL_TIME) console.log({[methodPath]:spentTime});
       if (LOG_API_CALL_RESULT) console.log(`${methodPath} result:`, res);
       
         return res;
     }
 
 
-    const logTime = (label, start) => {
+    const measureTime = (start, format = true) => {
         if (! LOG_API_CALL_TIME) return;
         const NS_PER_SEC = 1e9;
         const NUM_IN_MS = 1000000;
         if (start) {
           const diff = process.hrtime(start);
-          const time = (diff[0] ? diff[0] + ' sec, ' : '') + (diff[1]/NUM_IN_MS).toFixed(3) + 'ms';
-          return { [label]: time };
+          const time = format ? 
+          ((diff[0] ? diff[0] + ' sec, ' : '') + (diff[1]/NUM_IN_MS).toFixed(3) + 'ms') :
+          parseFloat((diff[0] * 1000 + (diff[1] / NUM_IN_MS).toFixed(3)));
+          return time;
         }
         return process.hrtime();
     }
+
+    
+
+    // const formatMilliseconds = (milliseconds) => {
+    //     const ms = milliseconds % 1000;
+    //     milliseconds = (milliseconds - ms) / 1000;
+    // }
 
     const delay = (time) => {
         return new Promise(function(resolve) { 
@@ -142,7 +154,7 @@ const callAPI = async (library, methodPath, ...args) => {
 
     const processFileLineByLine = async (filePath, processLineCallback, finishCallback) => {
       let index = 0, stat;
-      const startMemory = process.memoryUsage().heapUsed, startTime = logTime(), label = 'processFileLineByLine';
+      const startMemory = process.memoryUsage().heapUsed, startTime = measureTime();
       try {
           stat = fs.statSync(filePath);
           const rl = readline.createInterface({
@@ -162,9 +174,9 @@ const callAPI = async (library, methodPath, ...args) => {
             const size = humanFileSize(stat.size, true);
             const memoryUsed = (process.memoryUsage().heapUsed - startMemory) / 1024 / 1024;
             const MB = Math.round(memoryUsed * 100) / 100 + ' MB';
-            const time = logTime(label, startTime);
+            const time = measureTime(startTime);
             
-            finishCallback({filePath, size, lines:index, used: MB, time:time[label]});
+            finishCallback({filePath, size, lines:index, used: MB, time});
           }
       } catch (err) {
           console.error(err);
@@ -176,4 +188,4 @@ const callAPI = async (library, methodPath, ...args) => {
 
 
 
-module.exports = {callAPI, logTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine };
+module.exports = {callAPI, measureTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine };

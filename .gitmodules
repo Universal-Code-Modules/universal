@@ -22,3 +22,6 @@
 [submodule "lib/FULLSTACK/Nuxt"]
 	path = lib/FULLSTACK/Nuxt
 	url = https://github.com/leonpolak/universal-nuxt.git
+[submodule "lib/FRONTEND/Vanilla"]
+	path = lib/FRONTEND/Vanilla
+	url = https://github.com/leonpolak/universal-vanilla-front.git
