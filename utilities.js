@@ -4,6 +4,7 @@ const fs  = require ("fs");
 const path = require('path');
 const events = require('events');
 const readline = require('readline');
+const { Readable } = require ("stream");
 // const { TEST, LOG_TIME } = process.env;
 
 // const _ = require('lodash');
@@ -29,9 +30,8 @@ const callAPI = async (library, methodPath, ...args) => {
         try {
             res = await method.call(library, ...args);
         } catch(error) {
-            // console.error(error);
             const message = `Error occured while calling ${methodPath}`;
-            throw new Error(message, { error });
+            return console.error(message, { error });
         }
 
       spentTime  = measureTime(start)
@@ -183,9 +183,17 @@ const callAPI = async (library, methodPath, ...args) => {
       }
     }
 
+ const saveFileFromWeb = async (url, path) => {
+    const res = await fetch(url);
+    if (!res.ok || !res.body) throw new Error(`unexpected response ${res.statusText}`);
+    let writer = fs.createWriteStream(path);
+    Readable.fromWeb(res.body).pipe(writer);
+ }
+
 
     
 
 
 
-module.exports = {callAPI, measureTime, delay, random, roughSizeOfObject, formatBytes, humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine };
+module.exports = {callAPI, measureTime, delay, random, roughSizeOfObject, formatBytes, 
+                  humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine, saveFileFromWeb };

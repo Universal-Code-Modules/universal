@@ -34,7 +34,7 @@
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.13",
     "ollama": "^0.5.0",
-    "openai": "^4.29.2",
+    "openai": "^4.32.1",
     "pg": "^8.11.3",
     "redis": "^4.6.13",
     "tiktoken": "^1.0.13"

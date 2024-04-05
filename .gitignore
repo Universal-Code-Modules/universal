@@ -137,3 +137,7 @@ index.js
 .DS_Store
 #store temp files for testing
 temp
+#keep private testing files
+my_*
+#don't include temporary video frames
+video-frames
