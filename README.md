@@ -21,6 +21,10 @@ PGDATABASE=''
 PGHOST=''
 PGPORT=''
 
+MAIL_SERVICE_NAME=''
+MAIL_SERVICE_USER=''
+MAIL_SERVICE_PASSWORD=''
+
 MJ_APIKEY_PUBLIC='your API key'
 MJ_APIKEY_PRIVATE='your API secret'
 MJ_API_TOKEN='your API token'
@@ -51,6 +55,16 @@ All non private global settings, like port numbers etc. you should store in conf
 ### Email
 
 This module manages email interaction with users. It should be able to send emails to the users, verify the email address, send the password reset link and so on.
+
+#### Use nodemailer module
+
+Some examples of configuration for SMTP transport see [here...](https://nodemailer.com/smtp/)
+
+const cfg = {
+  mailConfig: {
+    ...
+  }
+}
 
 
 ### DB
