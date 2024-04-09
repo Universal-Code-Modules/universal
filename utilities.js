@@ -1,10 +1,11 @@
 require('dotenv').config();
-const { LOG_API_CALL_TIME, LOG_API_CALL_RESULT } = require('./config');
+const { LOG_API_CALL_TIME, LOG_API_CALL_RESULT, LOG_API_CALL_ERRORS } = require('./config');
 const fs  = require ("fs");
 const path = require('path');
 const events = require('events');
 const readline = require('readline');
 const { Readable } = require ("stream");
+const math = require('@dip1059/safe-math-js');
 // const { TEST, LOG_TIME } = process.env;
 
 // const _ = require('lodash');
@@ -31,7 +32,8 @@ const callAPI = async (library, methodPath, ...args) => {
             res = await method.call(library, ...args);
         } catch(error) {
             const message = `Error occured while calling ${methodPath}`;
-            return console.error(message, { error });
+            if (LOG_API_CALL_ERRORS) console.error(message, error);
+            return {error};
         }
 
       spentTime  = measureTime(start)
@@ -62,6 +64,7 @@ const callAPI = async (library, methodPath, ...args) => {
     //     const ms = milliseconds % 1000;
     //     milliseconds = (milliseconds - ms) / 1000;
     // }
+    
 
     const delay = (time) => {
         return new Promise(function(resolve) { 
@@ -185,15 +188,17 @@ const callAPI = async (library, methodPath, ...args) => {
 
  const saveFileFromWeb = async (url, path) => {
     const res = await fetch(url);
-    if (!res.ok || !res.body) throw new Error(`unexpected response ${res.statusText}`);
+    if (!res.ok || !res.body) return({error:`unexpected response ${res.statusText}`});
     let writer = fs.createWriteStream(path);
     Readable.fromWeb(res.body).pipe(writer);
  }
+
+ 
 
 
     
 
 
 
-module.exports = {callAPI, measureTime, delay, random, roughSizeOfObject, formatBytes, 
+module.exports = {callAPI, measureTime, math, delay, random, roughSizeOfObject, formatBytes, 
                   humanFileSize, extractVideoFrames, cleanDirectory, processFileLineByLine, saveFileFromWeb };
