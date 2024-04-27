@@ -7,7 +7,7 @@ Create separate local postgresql database with optional [pgvector](https://githu
 
 I recommend to install [timescaledb](https://neon.tech/docs/extensions/timescaledb) as well, but you can skip it for now.
 
-
+Install [ffmpeg](https://ffmpeg.org/) for audio and video processing.
 
 Install [nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/) for load balancing and reverse proxy (optional). 
 
