@@ -183,6 +183,22 @@ A user should manually peak and install the module dependencies from the package
 Anyone is welcome to contribute to the project. The project is open for the public and I would like to keep it that way. 
 Peak a module you see a potential in and start working on it.
 
+## TODO list
+
+* Make LLM to be separate subrepository, with all dependencies and tests.
+* Write tests for openaAI assisitants
+* Finish Huggingface module and write JEST tests  
+* Add price calculation for all methods that return usage statistics
+* Add price estimation function for all methods, that do not return usage statistics
+* Add "my_" prefix to all generated dusting tests files, so git will ignore them 
+* Make frontend allowing to interact with multiple LLMs in parralel and compare output
+* Connect the frontend to openai, huggingface and ollama modules
+* Make frontend to visualise dialogues and all other interactions with LLMs 
+* Allow dinamic API_KEY definition (stored on frontend side)
+  
+
+
+
 ## 
 
 To be continued...
