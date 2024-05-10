@@ -25,3 +25,6 @@
 [submodule "lib/FRONTEND/Vanilla"]
 	path = lib/FRONTEND/Vanilla
 	url = https://github.com/leonpolak/universal-vanilla-front.git
+[submodule "lib/LLMs"]
+	path = lib/LLMs
+	url = https://github.com/leonpolak/universal-llm.git
